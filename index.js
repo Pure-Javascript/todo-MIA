@@ -77,17 +77,11 @@
 		titleInput.setAttribute('class', 'title');
 		titleInput.setAttribute('type', 'text');
 		titleInput.setAttribute('placeholder', '제목을 입력하세요');
-		titleInput.addEventListener('keyup', (e) => {
-			title = e.target.value;
-		});
 
 		const contentInput = document.createElement('input');
 		contentInput.setAttribute('class', 'description');
 		contentInput.setAttribute('type', 'text');
 		contentInput.setAttribute('placeholder', '내용을 입력하세요');
-		contentInput.addEventListener('keyup', (e) => {
-			content = e.target.value;
-		});
 		
 		const button = document.createElement('button');
 		button.textContent = '입력';
