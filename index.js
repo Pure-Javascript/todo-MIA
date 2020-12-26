@@ -33,7 +33,7 @@
 
 		localStorage.setItem('todos', JSON.stringify(todos));
 		todoList.querySelector('.todo-list').remove();
-		drawTodoList(todoListForm, todos);
+		drawTodoList(todoLayout, todos);
 		clearInput();
 	};
 
@@ -143,11 +143,11 @@
 
 	todos = getTodoList();
 	
-	const todoListForm = document.createElement('div');
-	todoListForm.setAttribute('class', 'todo');
+	const todoLayout = document.createElement('div');
+	todoLayout.setAttribute('class', 'todo');
 
-	drawInputForm(todoListForm);
-	drawTodoList(todoListForm, todos);
+	drawInputForm(todoLayout);
+	drawTodoList(todoLayout, todos);
 
-	document.body.append(todoListForm);
+	document.body.append(todoLayout);
 })();
