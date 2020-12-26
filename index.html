@@ -4,151 +4,19 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
+	<link rel="stylesheet" href="./index.css">
+	<script src="./index.js" defer></script>
+	<style>
+		body {
+			width: 100%;
+			height: 100vh;
+			margin: 0px;
+			padding: 0px;
+			font-family: 'Do Hyeon', sans-serif;
+			background: linear-gradient(#e66465, #9198e5) no-repeat;
+		}
+	</style>
 </head>
 <body>
-<script type="text/javascript">
-(() => {
-	let todos = [];
-	let selectedTodo = null;
-
-	const getTodoList = () => {
-	// @FIXME 추후 불러온 데이터로 대체
-		return [
-			{
-				id: 1, 
-				title: '장보기', 
-				content: '쌀, 계란 사기',
-				until: null,
-				status: 'TODO',
-				seq: 1
-			}
-		];
-	};
-
-	const editTodo = (todo) => {
-		const todoList = document.querySelector('.todo');
-		// @TODO validation
-
-		if (todo == null) {
-			const todo = {
-				id: null,
-				title: todoList.querySelector('.title').value,
-				content: todoList.querySelector('.content').value,
-				until: null,
-				status: 'TODO',
-				seq: 0
-			};
-
-			todos.unshift(todo);
-		} else {
-			const todo = selectedTodo;
-
-			todo.title = todoList.querySelector('.title').value;
-			todo.content = todoList.querySelector('.content').value;
-			todos.splice(todos.indexOf(todo), 1, todo);
-
-			selectedTodo = null;
-		}
-
-		todoList.querySelector('.todo-list').remove();
-		drawTodoList(todoListForm, todos);
-		clearInput();
-	};
-
-	const deleteTodo = (el, todo) => {
-		el.remove();
-		todos.splice(todos.indexOf(todo), 1);
-		console.log(todos);
-	}
-
-	// todo list를 그림
-	const drawTodoList = (el, todos) => {
-		const fragment = document.createDocumentFragment();
-		const ul = document.createElement('ul');
-		
-		ul.setAttribute('class', 'todo-list');
-		
-		todos.forEach(todo => ul.append(createListItem(todo)));
-
-		fragment.append(ul);
-		el.append(fragment);
-	}
-
-	const drawInputForm = (el) => {
-		const fragment = document.createDocumentFragment();
-
-		const titleInput = document.createElement('input');
-		titleInput.setAttribute('class', 'title');
-		titleInput.setAttribute('type', 'text');
-		titleInput.addEventListener('keyup', (e) => {
-			title = e.target.value;
-		});
-
-		const contentInput = document.createElement('input');
-		contentInput.setAttribute('class', 'content');
-		contentInput.setAttribute('type', 'text');
-		contentInput.addEventListener('keyup', (e) => {
-			content = e.target.value;
-		});
-		
-		const button = document.createElement('button');
-		button.textContent = '입력';
-		button.addEventListener('click', (e) => editTodo(selectedTodo));
-
-		const buttonCancel = document.createElement('button');
-		buttonCancel.textContent = '취소';
-		buttonCancel.addEventListener('click', (e) => clearInput());
-
-		fragment.append(titleInput, contentInput, button, buttonCancel);
-		el.append(fragment);
-	}
-
-	const createListItem = (todo) => {
-		const li = document.createElement('li');
-		
-		li.addEventListener('click', (e) => {
-			if (e.target.tagName == 'BUTTON') {
-				deleteTodo(li, todo);
-				return;
-			};
-
-			const todoList = document.querySelector('.todo');
-
-			todoList.querySelector('.title').value = todo.title;
-			todoList.querySelector('.content').value = todo.content;
-
-			selectedTodo = todo;
-		});
-
-		li.setAttribute('class', 'item');
-		li.innerHTML = `
-				<h1>${todo.title}</h1>
-				<p>${todo.content}</p>
-				<span>${todo.until ? todo.until : ''}</span>
-				<span>${todo.status}</span>
-				<button>삭제</button>
-		`;
-		
-		return li;
-	}
-
-	const clearInput = () => {
-		const todoList = document.querySelector('.todo');
-
-		todoList.querySelector('.title').value = '';
-		todoList.querySelector('.content').value = '';
-	}
-
-	todos = getTodoList();
-	
-	const todoListForm = document.createElement('div');
-	todoListForm.setAttribute('class', 'todo');
-
-	drawInputForm(todoListForm);
-	drawTodoList(todoListForm, todos);
-
-	document.body.append(todoListForm);
-})();
-</script>
 </body>
 </html>
