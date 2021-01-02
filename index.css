@@ -6,7 +6,35 @@
 	box-sizing: border-box;
 	border-radius: 4px;
 	background-color: #fff;
-	overflow: hidden;	
+}
+
+.todo > .dialog {
+    position: absolute;
+    display: inline-block;
+    top: 0px;
+    right: -300px;
+    padding: 20px;
+    width: 200px;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0px 0px 8px 0px #eee;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+.todo > .dialog > .title::before {
+    content: '\b7'; 
+    float: left;
+    width: 20px;
+    margin-left: 0px;
+    text-align: center;
+}
+.todo > .dialog > button {
+    position: absolute;
+    padding: 5px 10px;
+    right: 15px;
+    bottom: 15px;
+    border: none;
+    background-color: #e6e7e8;
 }
 
 .todo > .title,
@@ -17,6 +45,22 @@
 	box-sizing: border-box;
 	border: 1px solid #eee;
 }
+.todo > .deadline {
+    padding: 10px 0px;
+}
+.todo > button {
+    display: inline-block;
+    margin: 1px;
+    width: 49%;
+    height: 35px;
+    border-radius: 6px;
+    text-align: center;
+    border: none;
+}
+.todo > button.save-btn {
+    background-color: #1fa1eb;
+    color: #fff;
+}
 
 .todo > .todo-list {
 	margin: 20px 0px 0px;
@@ -26,7 +70,7 @@
 }
 .todo > .todo-list > .item {
 	position: relative;
-	margin: 1px;
+	margin: 10px 5px;
 	padding: 10px 15px 10px 65px;
 	height: 70px;
 	box-sizing: border-box;
@@ -47,6 +91,18 @@
 	position: absolute;
     left: 15px;
     top: 22px;
+}
+.todo > .todo-list > .item > .content > .until {
+    position: absolute;
+    right: 75px;
+    top: 21px;
+    height: 25px;
+    background: #f1f1f2;
+    border-radius: 6px;
+    text-align: center;
+    line-height: 25px;
+    padding: 0px 10px;
+    color: #8a8a8a;
 }
 .todo > .todo-list > .item > .status > .icon {
 	width: 25px;
